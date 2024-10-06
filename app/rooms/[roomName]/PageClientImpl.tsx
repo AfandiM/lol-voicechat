@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 export default function PageClientImpl({
   params,
 }: {
-  params: { participantToken: string | null };
+  params: { participantToken: string | undefined };
 }) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
