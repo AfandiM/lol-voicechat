@@ -89,7 +89,6 @@ export async function GET(request: NextRequest) {
       };
       return NextResponse.json(result);
     } else {
-      console.log(response);
       return new NextResponse('User not in game!', {
         status: 404,
         statusText: 'User not in game!',

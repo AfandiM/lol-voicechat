@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { AudioConference, LiveKitRoom, VideoConference } from '@livekit/components-react';
+import { AudioConference, LiveKitRoom } from '@livekit/components-react';
 
 import { useRouter } from 'next/navigation';
 
