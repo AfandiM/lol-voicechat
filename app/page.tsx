@@ -35,10 +35,6 @@ export default function Page() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
-      <script
-        type="text/javascript"
-        src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
-      ></script>
       <main className={styles.main} data-lk-theme="default">
         <div className="header">
           <h1 style={{ color: 'green', width: '100%' }}>LoL Voice Chat</h1>
@@ -70,14 +66,6 @@ export default function Page() {
         <div>
           <p style={{ color: 'red', fontWeight: 600 }}>{errorMessage}</p>
         </div>
-        <a href="https://ko-fi.com/U7U014D0YR" target="_blank">
-          <img
-            height="36"
-            style={{ border: 0, height: '36px' }}
-            src="https://storage.ko-fi.com/cdn/kofi4.png?v=3"
-            alt="Buy Me a Coffee at ko-fi.com"
-          />
-        </a>
       </main>
     </>
   );
