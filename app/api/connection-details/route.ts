@@ -9,9 +9,14 @@ const LIVEKIT_URL = process.env.LIVEKIT_URL;
 export async function GET(request: NextRequest) {
   try {
     const room_id = request.nextUrl.searchParams.get('room_id');
+    if (!room_id) {
+      return new NextResponse('Missing required query parameter: room_id', {
+        status: 400,
+      });
+    }
     const username_tag = request.cookies.get('username_tag')?.value;
     const roomService = new RoomServiceClient(LIVEKIT_URL || '', API_KEY, API_SECRET);
-    let participants = [];
+    let participants: any[] = [];
     try {
       participants = await roomService.listParticipants(room_id);
     } catch (e) {
