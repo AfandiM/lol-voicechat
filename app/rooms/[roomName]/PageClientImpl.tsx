@@ -5,11 +5,6 @@ import { AudioConference, LiveKitRoom } from '@livekit/components-react';
 
 import { useRouter } from 'next/navigation';
 
-const CONN_DETAILS_ENDPOINT =
-  process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? '/api/connection-details';
-
-const LIVEKIT_WS_URL = process.env.LIVEKIT_WS_URL;
-
 export default function PageClientImpl({
   params,
 }: {

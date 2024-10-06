@@ -1,5 +1,3 @@
-import { randomString } from '@/lib/client-utils';
-import { ConnectionDetails } from '@/lib/types';
 import { AccessToken, AccessTokenOptions, RoomServiceClient, VideoGrant } from 'livekit-server-sdk';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
