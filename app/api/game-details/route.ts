@@ -47,13 +47,13 @@ export async function GET(request: NextRequest) {
     if (response.status == 200) {
       const data = await response.json();
       let room_id = '';
-      data?.participants.forEach((participant) => {
+      data?.participants.forEach((participant: any) => {
         if (participant['puuid'] === PUUID) {
           room_id = String(data['gameId']).concat(String(participant['teamId']));
         }
       });
       const roomService = new RoomServiceClient(LIVEKIT_URL || '', API_KEY, API_SECRET);
-      let participants = [];
+      let participants: any[] = [];
       try {
         participants = await roomService.listParticipants(room_id);
       } catch (e) {
