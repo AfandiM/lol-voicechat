@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Track } from "livekit-client";
+import * as React from 'react';
+import { Track } from 'livekit-client';
 import {
   WidgetState,
   useTracks,
@@ -8,10 +8,10 @@ import {
   ParticipantAudioTile,
   ControlBar,
   Chat,
-} from "@livekit/components-react";
+  ParticipantTile,
+} from '@livekit/components-react';
 
-export interface AudioConferenceProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+export interface AudioConferenceProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function AudioConferenceClientImpl({ ...props }: AudioConferenceProps) {
   const [widgetState, setWidgetState] = React.useState<WidgetState>({
     showChat: false,
@@ -38,8 +38,8 @@ export function AudioConferenceClientImpl({ ...props }: AudioConferenceProps) {
             }}
           />
         </div>
-        <Chat style={{ display: widgetState.showChat ? "grid" : "none" }} />
-        <div style={{ display: "none" }}></div>
+        <Chat style={{ display: widgetState.showChat ? 'grid' : 'none' }} />
+        <div style={{ display: 'none' }}></div>
       </LayoutContextProvider>
     </div>
   );
