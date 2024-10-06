@@ -12,7 +12,6 @@ import {
 } from 'livekit-client';
 import { DebugMode } from '@/lib/Debug';
 import { useMemo } from 'react';
-import { decodePassphrase } from '@/lib/client-utils';
 import { SettingsMenu } from '@/lib/SettingsMenu';
 
 export function VideoConferenceClientImpl(props: {
