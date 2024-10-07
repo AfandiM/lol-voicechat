@@ -30,14 +30,15 @@ export async function GET(request: NextRequest) {
         status: 400,
       });
     }
-    const PUUID = await getUserPUUID(username_tag || '');
-
+    const userInfo = await getUserPUUID(username_tag || '');
+    const PUUID = userInfo?.puuid || null;
     if (PUUID === null) {
       return new NextResponse('User not found!', {
         status: 404,
         statusText: 'User not found!',
       });
     }
+    const username = userInfo?.gameName + '#' + userInfo?.tagLine || '';
 
     const response = await fetch(RIOT_SPECTATE_ENDPOINT + PUUID + '?api_key=' + RIOT_API_KEY, {
       headers: RIOT_AUTH_HEADERS,
@@ -59,9 +60,15 @@ export async function GET(request: NextRequest) {
       } catch (e) {
         console.log(e);
       }
+      roomService.createRoom({
+        name: room_id,
+        maxParticipants: 5,
+        emptyTimeout: 60,
+        departureTimeout: 60,
+      });
       let error = false;
       participants.forEach((participant) => {
-        if (participant.identity === username_tag) {
+        if (participant.identity === PUUID) {
           error = true;
         }
       });
@@ -74,8 +81,8 @@ export async function GET(request: NextRequest) {
       // Generate participant token
       const participantToken = await createParticipantToken(
         {
-          identity: username_tag,
-          name: username_tag,
+          identity: PUUID,
+          name: username,
         },
         room_id,
       );
@@ -85,7 +92,7 @@ export async function GET(request: NextRequest) {
         serverUrl: LIVEKIT_URL || '',
         roomName: room_id,
         participantToken: participantToken,
-        participantName: username_tag,
+        participantName: username,
       };
       return NextResponse.json(result);
     } else {
@@ -109,6 +116,7 @@ async function createParticipantToken(userInfo: AccessTokenOptions, roomName: st
     canPublish: true,
     canPublishData: true,
     canSubscribe: true,
+    roomCreate: false,
   };
   at.addGrant(grant);
   const token = await at.toJwt();

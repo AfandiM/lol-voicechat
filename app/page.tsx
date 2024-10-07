@@ -19,7 +19,11 @@ export default function Page() {
     } else {
       setLoading(true);
       getUserGameID(username_tag).then(async (response) => {
-        if (response.status !== 200) {
+        console.log(response);
+        if (response.status === 401) {
+          setErrorMessage('User already in call!');
+          setLoading(false);
+        } else if (response.status !== 200) {
           setErrorMessage('User not in game!');
           setLoading(false);
         } else {
