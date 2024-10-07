@@ -1,7 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { LiveKitRoom } from '@livekit/components-react';
+import {
+  LiveKitRoom,
+  useLiveKitRoom,
+  useRoomContext,
+  useRoomInfo,
+} from '@livekit/components-react';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { AudioConferenceClientImpl } from '@/app/custom/AudioConferenceClientImpl';

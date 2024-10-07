@@ -9,7 +9,10 @@ import {
   ControlBar,
   Chat,
   ParticipantTile,
+  useRoomContext,
+  useParticipants,
 } from '@livekit/components-react';
+import { ParticipantAudioTileClientImpl } from './ParticipantAudioTileClientImpl';
 
 export interface AudioConferenceProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function AudioConferenceClientImpl({ ...props }: AudioConferenceProps) {
@@ -26,7 +29,7 @@ export function AudioConferenceClientImpl({ ...props }: AudioConferenceProps) {
         <div className="lk-video-conference-inner" {...props}>
           <div className="lk-audio-conference-stage">
             <TrackLoop tracks={audioTracks}>
-              <ParticipantAudioTile />
+              <ParticipantAudioTileClientImpl />
             </TrackLoop>
           </div>
           <ControlBar
