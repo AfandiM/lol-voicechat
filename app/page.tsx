@@ -70,12 +70,16 @@ export default function Page() {
           </div>
         </div>
         <div className="login-container">
-          <p style={{ fontWeight: 500 }}>This is a prototype</p>
+          <p style={{ fontWeight: 500, color: 'black' }}>This is a prototype</p>
           <br />
           <a href="mailto:lolvc.dev@gmail.com" style={{ fontWeight: 500 }}>
             Suggestions and concerns are welcome
           </a>
         </div>
+        <a href="https://github.com/AfandiM/lol-voicechat" style={{ color: 'inherit' }}>
+          <i className="fa fa-github" style={{ fontSize: '48px' }}></i>
+        </a>
+        <br />
         <a href="https://ko-fi.com/U7U014D0YR" target="_blank">
           <img
             height="36"
